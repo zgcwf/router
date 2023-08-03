@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>App</h1>
+  </div>
+  <div>
+    <div>
+      <!-- router-link：跳转到对应路由 -->
+      <router-link :to="{ path: '/home' }">首页</router-link>
+    </div>
+    <div>
+      <router-link to="/about" active-class="zgc-active">关于</router-link>
+    </div>
+  </div>
+  <!-- router-view: 占位，路由组件替换掉 router-view 进行展示 -->
+  <router-view></router-view>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script></script>
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+<style scoped>
+/* 当前被选中的路由身上默认会有一个 router-link-active 的class属性
+    通过active-class属性可以更改该class名
+*/
+.router-link-active {
+  color: blue;
+  font-size: 24px;
 }
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.zgc-active {
+  color: blue;
+  font-size: 24px;
 }
 </style>
