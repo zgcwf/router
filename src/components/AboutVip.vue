@@ -1,5 +1,5 @@
 <template>
-    <div class="about-vip">我是Vip</div>
+    <div class="about-vip">我是Vip, 只有管理员能用</div>
 </template>
 <script setup></script>
   

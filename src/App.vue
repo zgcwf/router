@@ -2,7 +2,7 @@
   <div>
     <h1>App</h1>
   </div>
-  <div>
+  <div class="nav">
     <div>
       <!-- router-link：跳转到对应路由 -->
       <router-link :to="{ path: '/home' }">首页</router-link>
@@ -25,22 +25,22 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 const toAbout = () => {
-  router.push('/about')
+  router.push("/about");
   // router.replace('/about')
-}
+};
 
 const toHome = () => {
   router.push({
-    path: '/home',
+    path: "/home",
     query: {
-      name: 'wf', 
-      age: 20
-    }
-  })
-}
+      name: "wf",
+      age: 20,
+    },
+  });
+};
 </script>
 
 <style scoped>
@@ -55,5 +55,11 @@ const toHome = () => {
 .zgc-active {
   color: red;
   font-size: 24px;
+}
+
+.nav {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
 }
 </style>

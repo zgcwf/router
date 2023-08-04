@@ -45,6 +45,7 @@ const router = createRouter({
     { path: "/user/:id", component: MyUser },
     // 路由懒加载
     { path: "/info", component: () => import("../components/MyInfo.vue") },
+    { path: "/login", component: () => import("../components/MyLogin.vue") },
     // 最后什么业匹配不到的，展示NotFound组件
     {
       // 最后加*与不加*返回路径格式不一致，一个是字符串 abc/cba,一个是数组 ['abc', 'cba']
@@ -90,5 +91,21 @@ console.log(router.getRoutes());
 // 检查路由是否存在
 console.log(router.hasRoute());
 
+// 路由导航守卫
+// 1. 进行任何的路由跳转之前，传入的beforeEach中的函数都会被回调
+router.beforeEach((to, from) => {
+  console.log('beforeEach',to, from);
+  // 进入到任何界面时都跳转到login
+  // if (to.path !== '/login') {
+  //   return '/login'
+  // }
+  // 进入个人信息页面时进行判断（login => token => localStorage）：
+  // 没有登录跳转到登录页，登陆了直接进入个人信息界面
+  const token = localStorage.getItem('token')
+  if (to.path === '/info' && !token ) {
+    return '/login'
+  }
+
+})
 
 export default router;
